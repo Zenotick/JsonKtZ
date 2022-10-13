@@ -2,7 +2,7 @@ package me.zenotick.json
 
 class JsonArray : JsonValue() {
 
-    private val values: ArrayList<JsonValue> = ArrayList()
+    private val values = mutableListOf<JsonValue>()
 
     val size
         get() = this.values.size

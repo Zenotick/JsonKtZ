@@ -2,10 +2,13 @@ package me.zenotick.json
 
 class JsonObject : JsonValue() {
 
-    private val nameValueMap = LinkedHashMap<String, JsonValue>()
+    private val nameValueMap = mutableMapOf<String, JsonValue>()
 
     val size
         get() = this.nameValueMap.size
+
+    val keys
+        get() = this.nameValueMap.keys
 
     operator fun get(index: String) = nameValueMap[index] ?: throw IndexOutOfBoundsException()
 

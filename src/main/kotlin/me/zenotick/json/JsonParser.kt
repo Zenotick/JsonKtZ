@@ -1,12 +1,9 @@
 package me.zenotick.json
 
-class JsonParser private constructor() {
+class JsonParser {
 
     companion object {
         private val escapeChars = setOf('"', '\\', '/', 'b', 'f', 'n', 'r', 't')
-        private val parser = JsonParser()
-
-        fun parse(string: String): JsonValue = parser.parse(string)
     }
 
     private val builder = StringBuilder()
@@ -14,7 +11,7 @@ class JsonParser private constructor() {
     private var line = 0
     private var column = 0
 
-    private fun parse(string: String): JsonValue {
+    fun parse(string: String): JsonValue {
         try {
             this.reader = string.reader()
             if (peek() == -1) return JsonNull
@@ -111,7 +108,9 @@ class JsonParser private constructor() {
             while (Character.isDigit(peek()))
         } else if (digit == '0') {
             builder.append(readAsChar())
-            if (Character.isDigit(peek())) throw fail("Unexpected digit")
+            val peek = peek()
+            if (Character.isDigit(peek)) throw fail("Unexpected digit")
+            else if (peek.toChar() == 'x') throw fail("Unexpected hex")
         } else throw fail("Unexpected character")
 
         var isWhole = true
