@@ -13,9 +13,21 @@ class JsonArray : JsonValue() {
         values[index] = value
     }
 
+    operator fun set(index: Int, value: Number) = set(index, JsonNumber(value))
+
+    operator fun set(index: Int, value: String) = set(index, JsonString(value))
+
+    operator fun set(index: Int, value: Boolean) = set(index, JsonBool(value))
+
     operator fun iterator() = values.iterator()
 
     fun add(value: JsonValue) = values.add(value)
+
+    fun add(value: String) = add(JsonString(value))
+
+    fun add(value: Number) = add(JsonNumber(value))
+
+    fun add(value: Boolean) = add(JsonBool(value))
 
     override fun get() = values
 

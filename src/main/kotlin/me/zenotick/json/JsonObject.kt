@@ -16,9 +16,21 @@ class JsonObject : JsonValue() {
         nameValueMap[name] = value
     }
 
+    operator fun set(name: String, value: String) = set(name, JsonString(value))
+
+    operator fun set(name: String, value: Number) = set(name, JsonNumber(value))
+
+    operator fun set(name: String, value: Boolean) = set(name, JsonBool(value))
+
     operator fun iterator() = nameValueMap.iterator()
 
     fun add(name: String, value: JsonValue) = set(name, value)
+
+    fun add(name: String, value: String) = set(name, value)
+
+    fun add(name: String, value: Number) = set(name, value)
+
+    fun add(name: String, value: Boolean) = set(name, value)
 
     override fun get() = nameValueMap
 
