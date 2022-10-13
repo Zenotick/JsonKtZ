@@ -1,1 +1,1 @@
-rootProject.name = "ZJsonKt"
+rootProject.name = "JsonKtZ"
