@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.zenotick"
-version = "1.0"
+version = "0.1-a"
 
 dependencies {
     implementation(kotlin("stdlib"))
