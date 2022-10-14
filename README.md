@@ -1,9 +1,22 @@
 # JSON for Kotlin
-> A simple JSON tool written in Kotlin for parsing and building JSON data.
+> A simple JSON tool written in Kotlin for parsing and creating JSON data.
+
+## Installation
+> Download the jar file from the [latest release](https://github.com/Zenotick/JsonKtZ/releases/latest)
+
+OR
+
+> Build the project manually:
+
+```shell
+git clone https://github.com/Zenotick/JsonKtZ.git
+cd JsonKtZ
+./gradlew build
+```
 
 ## Usage
 
-#### Parsing
+#### Parsing JSON
 ```kotlin
 val rawData = """{ "msg": "Hello World", "nums": [0, 2.7e2, 3.3] }"""
 val parser = JsonParser()
@@ -20,7 +33,7 @@ val num = jsonArray[1].asNumber().get()
 println(num) // 270.0
 ```
 
-#### Building
+#### Creating JSON
 ```kotlin
 val jsonObject = JsonObject()
 jsonObject["msg"] = "Hello World"
